@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import MinMaxScaler
 from streamlit_option_menu import option_menu
 import pandas as pd
@@ -72,8 +73,8 @@ if (selected == 'Implementasi') :
             #st.write(ph,temprature,taste,odor,fat,turbidity,colour)
             import pickle
             with open('milkquality.pkl','rb') as read:
-                knn=pickle.load(read)
-            cek=knn.predict([[ph,temprature,taste,odor,fat,turbidity,colour]])
+                clf=pickle.load(read)
+            cek=clf.predict([[ph,temprature,taste,odor,fat,turbidity,colour]])
             for prediksi in cek:
                 st.write('Kualitas Susu Anda ',prediksi)
         else:
